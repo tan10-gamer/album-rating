@@ -28,12 +28,47 @@ def album_rating():
     album_title = input("Enter the album title: ")
     artist_name = input("Enter the artist name: ")
 
+    genre_choice = input("Choose a genre:\n"
+    "1. Rock\n"
+    "2. Pop\n"
+    "3. Hip-Hop\n"
+    "4. Country\n"
+    "5. EDM\n"
+    "6. Rap\n"
+    "7. Other\n"
+
+    "Choice: "
+)
+
+    # match/case 
+    match genre_choice:
+        case "1":
+            genre = "Rock"
+        case "2":
+            genre = "Pop"
+        case "3":
+            genre = "Hip-Hop"
+        case "4":
+            genre = "Country"
+        case "5":
+            genre = "EDM"
+        case "6":
+            genre = "Rap"
+        case "7":
+            genre = "Other"
+        case _:
+            genre = "Unknown"
+
+    print("You chose a", genre, "album!")
+      
+
     # condition to check that rating stays between 1 and 10
     rating = get_valid_rating()
 
     print("\n----Album Summary----")
     print("Album Title: ", album_title)
     print("Artist Name: ", artist_name)
+    print("Genre: ", genre)
     print("Rating: ", rating)
 
     print("\n----Recommendation----")
@@ -45,11 +80,17 @@ def album_rating():
     else:
         print("You might not like other albums by this artist.")
 
+    return album_title
 
 album_rating()   # calls the album_rating function to start the program
 
 
+
 # main program. Loop to ask the user if they want to rate another album or exit the program
+albums = []
+album = album_rating()
+albums.append(album)
+
 while True:
     next_album = input("\nWould you like to rate another album? (yes/no): ")
     if next_album == "yes":
